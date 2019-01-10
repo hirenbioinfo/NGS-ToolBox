@@ -1,0 +1,2 @@
+#merge two or more file into signle one
+cat file*.fastq > mergefile.fastq
