@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#SBATCH -c 32
+#SBATCH -p short
+#SBATCH --mail-type=END
+#SBATCH --mail-user=user1@XXX.de
+
+# here starts your actual program call/computation
+#
+echo "START TIME: " `date`
+for R1 in *R1*.fastq.gz
+    do
+        echo $R1
+        R2=`echo $R1 | sed 's/_R1_/_R2_/'`
+echo $R2
+	N=$(basename $R1 .fastq.gz) ;
+echo $N
+R3=`echo $N | sed 's/_R1_/_R1_R2_/'`
+echo $R3
+cat ${R1} ${R2} > $R3.merged.fastq.gz; 
+done
+echo "END TIME: " `date`
