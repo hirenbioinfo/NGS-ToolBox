@@ -4,3 +4,6 @@
 
 **Genome annotation** 
   
+## Contact
+Please feel free to post general comments or any others technical questions
+
