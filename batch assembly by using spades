@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH -c 32
+#SBATCH -p long
+#SBATCH --mail-type=END
+#SBATCH --mail-user=hig18@dsmz.de
+# here starts your actual program call/computation
+#
+#echo "START TIME: " `date`
+
+for R1 in *.fastq
+    do
+        echo $R1
+        #R2=`echo $R1 | sed 's/_R1_/_R2_/'`
+        #bname=`echo $R1 | sed 's/_R1_.\+//'`
+	N=$(basename $R1 .fastq | sed 's/_R1_.\+//' )
+	spades.py --meta --merged $R1  -o $N 
+done
+
+
