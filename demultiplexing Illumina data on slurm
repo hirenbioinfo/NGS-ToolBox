@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#SBATCH -c 32
+#SBATCH -p short
+#SBATCH --mail-type=END
+#SBATCH --mail-user=user@XXX.de
+
+# here starts your actual program call/computation
+#
+echo "START TIME: " `date`
+bcl2fastq --fastq-compression-level 6 -r 20 -d 20 -p 20 -w 20 --barcode-mismatches 0 --runfolder-dir ./indir/ --output-dir ./outdir/ --no-lane-splitting --sample-sheet SampleSheet_NextSeqRun_08.06.2018.csv
+echo "END TIME: " `date`
